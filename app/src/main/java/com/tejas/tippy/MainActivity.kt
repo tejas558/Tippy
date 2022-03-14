@@ -1,7 +1,6 @@
-package com.example.tippy
+package com.tejas.tippy
 
 import android.animation.ArgbEvaluator
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -12,6 +11,7 @@ import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.tejas.tippy.R
 import kotlin.math.ceil
 import kotlin.math.floor
 

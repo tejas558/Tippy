@@ -1,4 +1,4 @@
-package com.example.tippy
+package com.tejas.tippy
 
 import org.junit.Test
 
