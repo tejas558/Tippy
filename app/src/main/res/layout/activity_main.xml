@@ -99,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="Made wih 💖 by Tejas"
+        android:text="Made with 💖 by Tejas"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,4 +116,25 @@
         app:layout_constraintStart_toStartOf="@+id/seekBarTip"
         app:layout_constraintTop_toBottomOf="@+id/seekBarTip"
         tools:text="Acceptable" />
+
+    <Button
+        android:id="@+id/bnRoundUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="round up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalLabel" />
+
+    <Button
+        android:id="@+id/bnRoundDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="round down"
+        app:layout_constraintBottom_toBottomOf="@+id/bnRoundUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bnRoundUp"
+        app:layout_constraintTop_toTopOf="@+id/bnRoundUp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

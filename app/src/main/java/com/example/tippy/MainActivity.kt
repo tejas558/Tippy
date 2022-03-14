@@ -7,10 +7,13 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.Button
 import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import kotlin.math.ceil
+import kotlin.math.floor
 
 private const val TAG = "MainActivity"
 private const val INITIAL_TIP_PERCENT = 15
@@ -21,7 +24,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvTipPercentLabel: TextView
     private lateinit var tvTipAmount: TextView
     private lateinit var tvTotalAmount: TextView
-    private lateinit var tvTipDescription: TextView;
+    private lateinit var tvTipDescription: TextView
+    private lateinit var bnRoundUp: Button
+    private lateinit var bnRoundDown: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         tvTipAmount = findViewById(R.id.tvTipAmount)
         tvTotalAmount = findViewById(R.id.tvTotalAmount)
         tvTipDescription = findViewById(R.id.tvTipDescription)
+        bnRoundUp = findViewById(R.id.bnRoundUp)
+        bnRoundDown = findViewById(R.id.bnRoundDown)
 
         seekBarTip.progress = INITIAL_TIP_PERCENT
         tvTipPercentLabel.text = "$INITIAL_TIP_PERCENT%"
@@ -62,6 +69,34 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        bnRoundUp.setOnClickListener{
+            roundUp()
+        }
+
+        bnRoundDown.setOnClickListener{
+            roundDown()
+        }
+    }
+
+    private fun roundDown() {
+        var tipAmount = tvTipAmount.text.toString().toDouble()
+        var totalAmount = tvTotalAmount.text.toString().toDouble()
+        tipAmount -= totalAmount - floor(totalAmount)
+        totalAmount = floor(totalAmount)
+        seekBarTip.progress = (tipAmount / totalAmount * 100).toInt()
+        tvTipAmount.text = "%.2f".format(tipAmount)
+        tvTotalAmount.text = "%.2f".format(totalAmount)
+    }
+
+    private fun roundUp() {
+        var tipAmount = tvTipAmount.text.toString().toDouble()
+        var totalAmount = tvTotalAmount.text.toString().toDouble()
+        tipAmount += ceil(totalAmount) - totalAmount
+        totalAmount = ceil(totalAmount)
+        seekBarTip.progress = (tipAmount / totalAmount * 100).toInt()
+        tvTipAmount.text = "%.2f".format(tipAmount)
+        tvTotalAmount.text = "%.2f".format(totalAmount)
     }
 
     private fun updateTipDescription(p1: Int) {
